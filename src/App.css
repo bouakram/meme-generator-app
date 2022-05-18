@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+.header{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-image: linear-gradient( to right,#603F8B ,#C55FFC) ;
+    color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header img{
+    max-height: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header span{
+    margin-right: auto;
+    margin-left: .5rem;
+    font-size: 25px;
+    font-weight: 700;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+p{
+    font-size: .9rem;
 }
 
-.App-link {
-  color: #61dafb;
+main{
+    padding: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputsection{
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+.inputsection input{
+    width: 50%;
+    height: 3rem;
+    text-indent: 5px;
+}
+
+button{
+    width: 100%;
+    background-image: linear-gradient( to right,#603F8B ,#C55FFC) ; ;
+    font-size: 1.5rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+main .memeContainer{
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+    width: 70%;
+    max-height: 500px;
+}
+
+main .memeContainer img{
+    height: 500px;
+    width: 100%;
+}
+
+.top{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    color: white;
+    text-shadow: 0 0 10px black;
+}
+
+.bottom{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    color: white;
+    text-shadow: 0 0 10px black;
 }
