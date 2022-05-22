@@ -13,11 +13,12 @@ function Main() {
 
     // https://api.imgflip.com/get_memes
     useEffect(()=>{
-        console.log('effect run')
+        
         fetch("https://api.imgflip.com/get_memes")
         .then(res => res.json())
         .then(data => setallMemeImg(data))
     },[])
+
     function getimg(){
     const data = allMemeImg.data.memes
     const position = Math.floor(Math.random() * data.length)
