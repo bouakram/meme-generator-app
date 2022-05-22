@@ -1,31 +1,58 @@
 import img1 from '../img/memeface.png'
-import MemeData from '../MemeData'
+import React, { useState, useEffect } from 'react';
 
 
 function Main() {
-    let url
 
+    const [memes , setMemes ] = useState({
+        TopText : '',
+        BottomText : '',
+        RandomImg : img1
+    })
+    const [allMemeImg , setallMemeImg] = useState({})
+
+    // https://api.imgflip.com/get_memes
+    useEffect(()=>{
+        console.log('effect run')
+        fetch("https://api.imgflip.com/get_memes")
+        .then(res => res.json())
+        .then(data => setallMemeImg(data))
+    },[])
     function getimg(){
-        const data = MemeData.data.memes
-        const position = Math.floor(Math.random() * data.length) + 1
-        return (
-            url = data[position].url
-            )           
+    const data = allMemeImg.data.memes
+    const position = Math.floor(Math.random() * data.length)
+
+    setMemes(previose => {
+        return {
+            ...previose, 
+            RandomImg : data[position].url}
+    })
+
+    }
+
+    function handelChange(event){
+        const {name , value } = event.target
+        setMemes(prevText =>{
+        return {
+        ...prevText,
+        [name] : value
         }
+        } )
+    }
 
     return (
         <main>
-            <div className="inputsection">
-                <input type="text" placeholder='top'/>
-                <input type="text" placeholder='bottom'/>
-            </div>
 
             {<button onClick = {getimg}>Get new meme image 🖼️</button>}
 
+            <div className="inputsection">
+                <input name='TopText' type="text" placeholder='text will display in  top of the image' value={memes.TopText} onChange={handelChange}/>
+                <input name='BottomText' type="text" placeholder='text will display in  bottom of the image' value={memes.BottomText} onChange={handelChange}/>
+            </div>
             <div className="memeContainer">
-                <img src={img1} alt="" />
-                <h1 className='top'>this is top</h1>
-                <h1 className='bottom'>this is buttom</h1>
+                <img src={memes.RandomImg} alt="" />
+                <h2 className='top'>{memes.TopText}</h2>
+                <h2 className='bottom'>{memes.BottomText}</h2>
             </div>
         </main>
     )

@@ -4,7 +4,7 @@ function Header() {
     return (
         <div className='header'>
             <img src={img} alt="" /> <span>MemeGenerator</span>
-            <p>React Course - Project 3</p>
+            <p>React - Project 3</p>
         </div>
     )
 }
